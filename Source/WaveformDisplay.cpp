@@ -68,7 +68,7 @@ void WaveformDisplay::loadURL(juce::URL audioURL)
 
 void WaveformDisplay::changeListenerCallback(juce::ChangeBroadcaster *source)
 {
-    DBG("wfd: change received! " );
+    //DBG("wfd: change received! " );
     repaint();
 }
 

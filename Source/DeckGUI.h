@@ -12,6 +12,7 @@
 #include <JuceHeader.h>
 #include "DJAudioPlayer.h"
 #include "WaveformDisplay.h"
+#include "RotarySliderLookandFeel.h"
 
 //==============================================================================
 /*
@@ -45,18 +46,36 @@ public:
     
     /** virtual function from Timer class */
     void timerCallback() override;
+    
+    /** get current volume of the volume slider */
+    double getGain();
+    
+    juce::Slider volumeSlider;
 
 private:
     
     DJAudioPlayer* djAudioPlayer;
     
-    juce::TextButton playButton;
-    juce::TextButton stopButton;
+//    juce::File playButtonFile;
+    juce::Image playButtonImage;
+    juce::ImageButton playButton;
+    
+//    juce::File pauseButtonFile;
+    juce::Image pauseButtonImage;
+    juce::ImageButton pauseButton;
+    
+//    juce::File loopButtonOffFile;
+    juce::Image loopButtonOffImage;
+//    juce::File loopButtonOnFile;
+    juce::Image loopButtonOnImage;
+    juce::ImageButton loopButton;
+    bool looping = false;
+    
     juce::TextButton loadButton;
-    juce::Slider volumeSlider;
     juce::Slider positionSlider;
     juce::Slider speedSlider;
     WaveformDisplay waveformDisplay;
+    RotarySliderLookandFeel sliderLookandFeel;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)
 };

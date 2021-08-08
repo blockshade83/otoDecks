@@ -83,9 +83,9 @@ void DJAudioPlayer::setPositionRelative(double pos)
 
 void DJAudioPlayer::setGain(double gain)
 {
-    if (gain < 0 || gain > 1.0)
+    if (gain < 0 || gain > 1.5)
     {
-        DBG("DJAudioPlayer::setGain: input should be between 0 and 1");
+        DBG("DJAudioPlayer::setGain: input should be between 0 and 1.5");
     }
     else
     {
@@ -116,3 +116,4 @@ double DJAudioPlayer::getPositionRelative()
         return 0;
     }
 }
+

@@ -5,23 +5,39 @@
               cppLanguageStandard="11">
   <MAINGROUP id="PcTVw8" name="OtoDecks">
     <GROUP id="{B9BD767A-50D2-DD48-7211-090409272212}" name="Source">
+      <FILE id="akdFiu" name="LoopButtonOn.png" compile="0" resource="1"
+            file="Source/Images/LoopButtonOn.png"/>
+      <FILE id="DdVUuA" name="LoopButton.png" compile="0" resource="1" file="Source/Images/LoopButton.png"/>
+      <FILE id="CiBQUC" name="PauseButton.png" compile="0" resource="1" file="Source/Images/PauseButton.png"/>
+      <FILE id="zICUIX" name="PlayButton.png" compile="0" resource="1" file="Source/Images/PlayButton.png"/>
+      <FILE id="FXH79F" name="DeckControl.cpp" compile="1" resource="0" file="Source/DeckControl.cpp"/>
+      <FILE id="xEWEdZ" name="DeckControl.h" compile="0" resource="0" file="Source/DeckControl.h"/>
+      <FILE id="t7TW8M" name="RotarySliderLookandFeel.cpp" compile="1" resource="0"
+            file="Source/RotarySliderLookandFeel.cpp" xcodeResource="0"/>
+      <FILE id="EmVMPF" name="RotarySliderLookandFeel.h" compile="0" resource="0"
+            file="Source/RotarySliderLookandFeel.h" xcodeResource="0"/>
       <FILE id="IGRYnw" name="PlaylistComponent.cpp" compile="1" resource="0"
-            file="Source/PlaylistComponent.cpp"/>
+            file="Source/PlaylistComponent.cpp" xcodeResource="0"/>
       <FILE id="Eo4GKC" name="PlaylistComponent.h" compile="0" resource="0"
-            file="Source/PlaylistComponent.h"/>
+            file="Source/PlaylistComponent.h" xcodeResource="0"/>
       <FILE id="wt372f" name="WaveformDisplay.cpp" compile="1" resource="0"
-            file="Source/WaveformDisplay.cpp"/>
+            file="Source/WaveformDisplay.cpp" xcodeResource="0"/>
       <FILE id="nxVX3a" name="WaveformDisplay.h" compile="0" resource="0"
-            file="Source/WaveformDisplay.h"/>
-      <FILE id="rC1uzj" name="DeckGUI.cpp" compile="1" resource="0" file="Source/DeckGUI.cpp"/>
-      <FILE id="pBP8Dt" name="DeckGUI.h" compile="0" resource="0" file="Source/DeckGUI.h"/>
+            file="Source/WaveformDisplay.h" xcodeResource="0"/>
+      <FILE id="rC1uzj" name="DeckGUI.cpp" compile="1" resource="0" file="Source/DeckGUI.cpp"
+            xcodeResource="0"/>
+      <FILE id="pBP8Dt" name="DeckGUI.h" compile="0" resource="0" file="Source/DeckGUI.h"
+            xcodeResource="0"/>
       <FILE id="y0rB2k" name="DJAudioPlayer.cpp" compile="1" resource="0"
-            file="Source/DJAudioPlayer.cpp"/>
-      <FILE id="VR74ti" name="DJAudioPlayer.h" compile="0" resource="0" file="Source/DJAudioPlayer.h"/>
-      <FILE id="MEfF9w" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-      <FILE id="rNlzxt" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+            file="Source/DJAudioPlayer.cpp" xcodeResource="0"/>
+      <FILE id="VR74ti" name="DJAudioPlayer.h" compile="0" resource="0" file="Source/DJAudioPlayer.h"
+            xcodeResource="0"/>
+      <FILE id="MEfF9w" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"
+            xcodeResource="0"/>
+      <FILE id="rNlzxt" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"
+            xcodeResource="0"/>
       <FILE id="dNf7tf" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
+            file="Source/MainComponent.cpp" xcodeResource="0"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
