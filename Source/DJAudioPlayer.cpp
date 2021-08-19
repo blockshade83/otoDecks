@@ -14,12 +14,10 @@ DJAudioPlayer::DJAudioPlayer(juce::AudioFormatManager& _formatManager)
 : formatManager(_formatManager)
 
 {
-    //formatManager.registerBasicFormats();
 }
 
 DJAudioPlayer::~DJAudioPlayer()
 {
-    
 }
 
 void DJAudioPlayer::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
@@ -115,5 +113,11 @@ double DJAudioPlayer::getPositionRelative()
     {
         return 0;
     }
+}
+
+
+double DJAudioPlayer::getDuration()
+{
+    return transportSource.getLengthInSeconds();
 }
 

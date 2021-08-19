@@ -33,7 +33,7 @@ private:
     //==============================================================================
 
     DeckControl deckControl;
-    PlaylistComponent playlist;
+    PlaylistComponent playlist{&deckControl};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

@@ -11,16 +11,21 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "Track.h"
+#include "DeckControl.h"
+#include <fstream>
 
 //==============================================================================
 /*
 */
 class PlaylistComponent  : public juce::Component,
                            public juce::TableListBoxModel,
-                           public juce::Button::Listener
+                           public juce::Button::Listener,
+                           public juce::TextEditor::Listener,
+                           public juce::Timer
 {
 public:
-    PlaylistComponent();
+    PlaylistComponent(DeckControl* _deckControl);
     ~PlaylistComponent() override;
 
     void paint (juce::Graphics&) override;
@@ -47,21 +52,44 @@ public:
                     int height,
                     bool rowIsSelected) override;
     
-    /** virtual function from TableListBoxModel class, optional */
-//    void cellClicked (int rowNumber,
-//                              int columnId,
-//                              const juce::MouseEvent&) override;
+    /** virtual function from Timer class */
+    void timerCallback() override;
     
+    /** virtual function brom Button class */
     void buttonClicked(juce::Button* button) override;
     
     juce::Component* refreshComponentForCell (int rowNumber,
                                         int columnId,
                                         bool isRowSelected,
                                         juce::Component *existingComponentToUpdate) override;
-
 private:
+    // variables for the deck control and table components
+    DeckControl* deckControl;
     juce::TableListBox tableComponent;
-    std::vector<std::string> trackTitles;
+    
+    std::vector<Track> allTracks; // all tracks available in the library
+    std::vector<Track> filteredTracks; // stores the tracks that we filter dynamically
+    std::vector<Track> tracks; // used to switch from allTracks to filteredTracks depending on the active filtering
+    
+    // playlist buttons and search box
+    juce::TextButton loadTrackButton;
+    juce::TextButton loadPlaylistButton;
+    juce::TextButton savePlaylistButton;
+    juce::TextEditor searchBoxLabel;
+    juce::TextEditor searchBox;
+    
+    /** saves most recent selection as default playlist so that *
+     * the user can have them when re-opening the application */
+    void saveDefaultPlaylist();
+    
+    /** load the default playlist, which was the most recent selection used */
+//    void loadDefaultPlaylist();
+    
+    /** load default playlist or open selection window to load from file */
+    void loadPlaylist(bool defaultMode = true);
+    
+    /** save current selection to a CSV file*/
+    void saveToFile();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlaylistComponent)
 };

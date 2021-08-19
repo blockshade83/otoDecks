@@ -3,9 +3,6 @@
 //==============================================================================
 MainComponent::MainComponent()
 {
-    // Make sure you set the size of the component after
-    // you add any child components.
-    setSize (800, 600);
 
     // Some platforms require permissions to open input channels so request that here
     if (juce::RuntimePermissions::isRequired (juce::RuntimePermissions::recordAudio)
@@ -19,10 +16,11 @@ MainComponent::MainComponent()
         // Specify the number of input and output channels that we want to open
         setAudioChannels (2, 2);
     }
-    setSize (1000, 600);
-    
+
     addAndMakeVisible(deckControl);
-    addAndMakeVisible(playlist);
+    addAndMakeVisible(&playlist);
+    
+    setSize (1000, 650);
 }
 
 MainComponent::~MainComponent()
@@ -52,12 +50,13 @@ void MainComponent::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll(juce::Colours::black);
+    g.setFont(12.0f);
 }
 
 void MainComponent::resized()
 {
     auto area = getLocalBounds();
 
-    deckControl.setBounds(area.removeFromTop(getHeight() * 0.6));
+    deckControl.setBounds(area.removeFromTop(getHeight() * 0.4));
     playlist.setBounds(area.removeFromBottom(getHeight()));
 }

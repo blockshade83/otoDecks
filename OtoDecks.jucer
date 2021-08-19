@@ -5,6 +5,9 @@
               cppLanguageStandard="11">
   <MAINGROUP id="PcTVw8" name="OtoDecks">
     <GROUP id="{B9BD767A-50D2-DD48-7211-090409272212}" name="Source">
+      <FILE id="Q8UWEQ" name="StopButton.png" compile="0" resource="1" file="Source/Images/StopButton.png"/>
+      <FILE id="ru1ZFZ" name="Track.cpp" compile="1" resource="0" file="Source/Track.cpp"/>
+      <FILE id="yKQGJ9" name="Track.h" compile="0" resource="0" file="Source/Track.h"/>
       <FILE id="akdFiu" name="LoopButtonOn.png" compile="0" resource="1"
             file="Source/Images/LoopButtonOn.png"/>
       <FILE id="DdVUuA" name="LoopButton.png" compile="0" resource="1" file="Source/Images/LoopButton.png"/>

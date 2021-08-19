@@ -13,6 +13,7 @@
 #include "DJAudioPlayer.h"
 #include "WaveformDisplay.h"
 #include "RotarySliderLookandFeel.h"
+#include "Track.h"
 
 //==============================================================================
 /*
@@ -50,31 +51,42 @@ public:
     /** get current volume of the volume slider */
     double getGain();
     
+    // variable for controlling volume
     juce::Slider volumeSlider;
+    
+    DJAudioPlayer* djAudioPlayer;
+    WaveformDisplay waveformDisplay;
+    
+    // variable to display which track is currently playing
+    juce::TextEditor nowPlaying;
 
 private:
     
-    DJAudioPlayer* djAudioPlayer;
-    
-//    juce::File playButtonFile;
+    // images and buttons for play, pause, stop, loop
     juce::Image playButtonImage;
     juce::ImageButton playButton;
-    
-//    juce::File pauseButtonFile;
     juce::Image pauseButtonImage;
     juce::ImageButton pauseButton;
-    
-//    juce::File loopButtonOffFile;
+    juce::Image stopButtonImage;
+    juce::ImageButton stopButton;
     juce::Image loopButtonOffImage;
-//    juce::File loopButtonOnFile;
     juce::Image loopButtonOnImage;
     juce::ImageButton loopButton;
+    
+    // variable to store whether loop is active or not
     bool looping = false;
     
-    juce::TextButton loadButton;
+    // slider variables to control position and speed
     juce::Slider positionSlider;
     juce::Slider speedSlider;
-    WaveformDisplay waveformDisplay;
+    
+    // textbox to display the position in seconds instead of as a %
+    juce::TextEditor positionSliderText;
+    
+    /** function to convert slider value from 0-1 range to seconds, considering a given track length */
+    juce::String convertToDuration(double sliderValue, double trackLength);
+ 
+    // look and feel to change volume slider to rotary slider
     RotarySliderLookandFeel sliderLookandFeel;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)

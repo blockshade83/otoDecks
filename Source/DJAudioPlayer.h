@@ -23,7 +23,8 @@ public:
     /** virtual function from juce::AudioSource, called repeatedly to fetch subsequent blocks of audio data */
     void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
     
-    /** virtual function from juce::AudioSource, allows the source to release anything it no longer needs after playback has stopped */
+    /** virtual function from juce::AudioSource, allows the source to release anything it *
+     * no longer needs after playback has stopped */
     void releaseResources() override;
     
     /** load file from a local folder or from an online source */
@@ -49,11 +50,13 @@ public:
     
     /** get the relative position of the play head */
     double getPositionRelative();
+    
+    /** get the duration of the track currently playing */
+    double getDuration();
 
 private:
     juce::AudioFormatManager& formatManager;
     std::unique_ptr<juce::AudioFormatReaderSource> readerSource;
     juce::AudioTransportSource transportSource;
     juce::ResamplingAudioSource resampleSource{&transportSource, false, 2};
-    
 };
