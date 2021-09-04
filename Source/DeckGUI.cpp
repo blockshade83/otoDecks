@@ -33,7 +33,7 @@ DeckGUI::DeckGUI(DJAudioPlayer* _djAudioPlayer,
                          playButtonImage, 0.75, juce::Colour::fromRGBA(0,0,0,0));
     addAndMakeVisible(playButton);
     playButton.addListener(this);
-    
+
     // set up pause button
     pauseButton.setImages(false, true, true,
                          pauseButtonImage, 1, juce::Colour::fromRGBA(0,0,0,0),
@@ -49,7 +49,7 @@ DeckGUI::DeckGUI(DJAudioPlayer* _djAudioPlayer,
                          stopButtonImage, 0.75, juce::Colour::fromRGBA(0,0,0,0));
     addAndMakeVisible(stopButton);
     stopButton.addListener(this);
-    
+
     // set up loop button (off position default)
     loopButton.setImages(false, true, true,
                          loopButtonOffImage, 1, juce::Colour::fromRGBA(0,0,0,0),
@@ -59,14 +59,14 @@ DeckGUI::DeckGUI(DJAudioPlayer* _djAudioPlayer,
     loopButton.addListener(this);
     
     // set up volume slider
-    addAndMakeVisible(volumeSlider);
+    volumeSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    volumeSlider.setLookAndFeel(&sliderLookandFeel);
     volumeSlider.addListener(this);
     volumeSlider.setRange(0, 1);
     volumeSlider.setValue(0.5);
-    volumeSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    volumeSlider.setLookAndFeel(&sliderLookandFeel);
     volumeSlider.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, true, 0,0);
     volumeSlider.setMouseDragSensitivity(75);
+    addAndMakeVisible(volumeSlider);
     
     // set up position slider
     addAndMakeVisible(positionSlider);
@@ -88,11 +88,11 @@ DeckGUI::DeckGUI(DJAudioPlayer* _djAudioPlayer,
     addAndMakeVisible(waveformDisplay);
     
     // set up Now Playing text box
-    addAndMakeVisible(nowPlaying);
     nowPlaying.setColour(juce::TextEditor::backgroundColourId, juce::Colours::black);
     nowPlaying.setColour(juce::TextEditor::textColourId, juce::Colours::white);
     nowPlaying.setReadOnly(true);
-    
+    addAndMakeVisible(nowPlaying);
+
     // start time to use for filtering playlist
     startTimer(200);
 }
