@@ -16,7 +16,10 @@ Track::Track(juce::URL _trackURL)
 : trackURL{_trackURL}
 {
     trackName = trackURL.getFileName();
-    trackDuration = getTrackDuration(trackURL);
+    if (trackURL.isLocalFile())
+    {
+        trackDuration = getTrackDuration(trackURL);
+    }
 }
 
 Track::~Track()
@@ -30,20 +33,33 @@ juce::String Track::getTrackDuration(juce::URL trackFileURL)
     formatManager.registerBasicFormats();
     juce::AudioFormatReader* reader = formatManager.createReaderFor(trackFileURL.createInputStream(false));
     
-    // calculate duration depending on number of samples and sampleRate
-    int duration = reader->lengthInSamples / reader->sampleRate;
-    
-    // extract minutes and seconds from duration in seconds
-    int durationMinutes = duration / 60;
-    int durationSeconds = duration % 60;
-    
-    if (durationSeconds < 10)
+    if (reader == nullptr)
     {
-        // add a 0 if less than 10 seconds so that we can format as "5:09" instead of "5:9"
-        return std::to_string(durationMinutes) + ":0" + std::to_string(durationSeconds);
+        return "0:00";
     }
     else
     {
-        return std::to_string(durationMinutes) + ":" + std::to_string(durationSeconds);
+        int duration;
+        // calculate duration depending on number of samples and sampleRate
+        if (reader->sampleRate > 0) {
+            duration = reader->lengthInSamples / reader->sampleRate;
+        }
+        else
+        {
+            duration = 0;
+        }
+        // extract minutes and seconds from duration in seconds
+        int durationMinutes = duration / 60;
+        int durationSeconds = duration % 60;
+        
+        if (durationSeconds < 10)
+        {
+            // add a 0 if less than 10 seconds so that we can format as "5:09" instead of "5:9"
+            return std::to_string(durationMinutes) + ":0" + std::to_string(durationSeconds);
+        }
+        else
+        {
+            return std::to_string(durationMinutes) + ":" + std::to_string(durationSeconds);
+        }
     }
 }
